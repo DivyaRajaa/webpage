@@ -44,20 +44,51 @@
     iframe{width:100%;height:350px;border:0;border-radius:12px;margin-top:20px;}
 
     /* Image Slider */
-    .slider{position:relative;width:100%;max-width:1000px;margin:40px auto;overflow:hidden;border-radius:16px;box-shadow:0 5px 15px rgba(0,0,0,0.2);}
-    .slides{display:flex;width:400%;animation:slide 16s infinite;}
-    .slides img{width:100%;flex:1;}
-    @keyframes slide{
-      0%{margin-left:0;}
-      20%{margin-left:0;}
-      25%{margin-left:-100%;}
-      45%{margin-left:-100%;}
-      50%{margin-left:-200%;}
-      70%{margin-left:-200%;}
-      75%{margin-left:-300%;}
-      95%{margin-left:-300%;}
-      100%{margin-left:0;}
-    }
+    /* Image Slider - improved sizing */
+.slider{
+  position:relative;
+  width:100%;
+  max-width:1000px;
+  margin:40px auto;
+  overflow:hidden;
+  border-radius:16px;
+  box-shadow:0 5px 15px rgba(0,0,0,0.2);
+}
+
+/* let flex size each slide to the slider width */
+.slides {
+  display: flex;
+  width: 400%;             /* 4 images = 400% */
+  animation: slide 16s infinite;
+}
+
+.slides img {
+  width: 100%;             /* each image takes full slider width */
+  flex: 0 0 25%;           /* 4 images = 25% each inside 400% container */
+  height: 400px;           /* control height */
+  object-fit: cover;       /* keeps aspect ratio, crops nicely */
+}
+
+
+
+/* keep your keyframes (no change needed) */
+@keyframes slide{
+  0%{margin-left:0;}
+  20%{margin-left:0;}
+  25%{margin-left:-100%;}
+  45%{margin-left:-100%;}
+  50%{margin-left:-200%;}
+  70%{margin-left:-200%;}
+  75%{margin-left:-300%;}
+  95%{margin-left:-300%;}
+  100%{margin-left:0;}
+}
+
+/* responsive: smaller height on narrow screens */
+@media(max-width:768px){
+  .slides img{ height: 250px; }
+}
+
 
     /* Contact Form */
     .contact-form{max-width:600px;margin:40px auto;background:#fff;padding:30px;
@@ -154,7 +185,7 @@
   <div class="slider">
     <div class="slides">
       <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2" alt="Flat Interior 1">
-      <img src="https://images.unsplash.com/photo-1505691938895-1758d7feb511" alt="Flat Interior 2">
+      <img src="https://media.istockphoto.com/id/1398814566/photo/interior-of-small-apartment-living-room-for-home-office.jpg?s=612x612&w=0&k=20&c=8clwg8hTpvoEwL7253aKdYAUuAp1-usFOacNR5qX-Rg=">
       <img src="https://images.woodenstreet.de/image/data/modular%20kitchen/Peachy.jpg" alt="Flat Interior 3">
       <img src="https://images.unsplash.com/photo-1580587771525-78b9dba3b914" alt="Flat Interior 4">
     </div>
